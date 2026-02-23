@@ -336,6 +336,9 @@ function isFaulty(doc, partyId) {
 // 🧠 CORE (THREAD SAFE DAILY VERSION)
 // =====================================================
 async function reconcileAndProcess() {
+ const REMINDER_DELAY = 20 * 60 * 1000;   // 20 minutes
+ const FINAL_DELAY = 20 * 60 * 1000;      // 20 minutes
+ const TIME_BUFFER = 60 * 1000; 
 
   if (!fs.existsSync(excelPath)) {
     log("ERROR", "Excel missing");
@@ -484,7 +487,7 @@ async function reconcileAndProcess() {
 
       // ================= REMINDER 1 =================
       if (!firstRow["Reminder1_Timestamp"] &&
-          now - notifTime >= 20 * 60 * 1000) {
+          now - notifTime >= REMINDER_DELAY - TIME_BUFFER) {
 
         const buffer = createMailBuffer(batchRows);
 
@@ -516,9 +519,10 @@ async function reconcileAndProcess() {
       }
 
       // ================= FINAL REMINDER =================
+               // 1 minute tolerance
       if (rem1Time &&
           !firstRow["FinalReminder_Timestamp"] &&
-          now - rem1Time >= 20 * 60 * 1000) {
+         now - rem1Time >= FINAL_DELAY - TIME_BUFFER) {
 
         const buffer = createMailBuffer(batchRows);
 
