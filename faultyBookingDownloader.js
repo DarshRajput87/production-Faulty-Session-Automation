@@ -484,7 +484,7 @@ async function reconcileAndProcess() {
 
       // ================= REMINDER 1 =================
       if (!firstRow["Reminder1_Timestamp"] &&
-          now - notifTime >= 24 * 60 * 60 * 1000) {
+          now - notifTime >= 20 * 60 * 1000) {
 
         const buffer = createMailBuffer(batchRows);
 
@@ -518,7 +518,7 @@ async function reconcileAndProcess() {
       // ================= FINAL REMINDER =================
       if (rem1Time &&
           !firstRow["FinalReminder_Timestamp"] &&
-          now - rem1Time >= 24 * 60 * 60 * 1000) {
+          now - rem1Time >= 20 * 60 * 1000) {
 
         const buffer = createMailBuffer(batchRows);
 
