@@ -327,13 +327,7 @@ function isFaulty(doc, partyId) {
 }
 
 // =====================================================
-// 🧠 CORE
-// =====================================================
-// =====================================================
-// 🧠 CORE (OLDER WORKING LOGIC RESTORED)
-// =====================================================
-// =====================================================
-// 🧠 CORE (THREAD SAFE DAILY VERSION)
+// 🧠 CORE — FINAL THREAD SAFE VERSION
 // =====================================================
 async function reconcileAndProcess() {
  const REMINDER_DELAY = 20 * 60 * 1000;   // 20 minutes
@@ -380,8 +374,7 @@ async function reconcileAndProcess() {
           bookingMap.get(
             String(r["Authorization Reference"])
           );
-        return doc &&
-          isFaulty(doc, partyId);
+        return doc && isFaulty(doc, partyId);
       });
 
     const { data: masterData, path: masterPath } =
@@ -425,6 +418,7 @@ async function reconcileAndProcess() {
       const info =
         await transporter.sendMail({
           to: PARTY_CONFIG[partyId].emails.join(","),
+          cc: PARTY_CONFIG[partyId].cc?.join(","),
           subject: baseSubject,
           text: buildMailText({
             type: "Notification",
@@ -456,7 +450,7 @@ async function reconcileAndProcess() {
     }
 
     // =====================================================
-    // 🔁 REMINDER ENGINE (PER BATCH = PER DAY THREAD)
+    // 🔁 REMINDER ENGINE (PER DAY THREAD)
     // =====================================================
     const batches =
       [...new Set(masterData.map(r => r["Batch_Date"]))];
@@ -485,7 +479,9 @@ async function reconcileAndProcess() {
           ? new Date(firstRow["Reminder1_Timestamp"]).getTime()
           : null;
 
-      // ================= REMINDER 1 =================
+      // =====================================================
+      // 🟡 REMINDER 1 (24 HOURS)
+      // =====================================================
       if (!firstRow["Reminder1_Timestamp"] &&
           now - notifTime >= REMINDER_DELAY - TIME_BUFFER) {
 
@@ -493,7 +489,8 @@ async function reconcileAndProcess() {
 
         await transporter.sendMail({
           to: PARTY_CONFIG[partyId].emails.join(","),
-          subject: `Re: ${baseSubject}`,
+          cc: PARTY_CONFIG[partyId].cc?.join(","),
+          subject: baseSubject,
           text: buildMailText({
             type: "Reminder1",
             partyId,
@@ -519,7 +516,6 @@ async function reconcileAndProcess() {
       }
 
       // ================= FINAL REMINDER =================
-               // 1 minute tolerance
       if (rem1Time &&
           !firstRow["FinalReminder_Timestamp"] &&
          now - rem1Time >= FINAL_DELAY - TIME_BUFFER) {
@@ -528,7 +524,8 @@ async function reconcileAndProcess() {
 
         await transporter.sendMail({
           to: PARTY_CONFIG[partyId].emails.join(","),
-          subject: `Re: ${baseSubject}`,
+          cc: PARTY_CONFIG[partyId].cc?.join(","),
+          subject: baseSubject,
           text: buildMailText({
             type: "FinalReminder",
             partyId,

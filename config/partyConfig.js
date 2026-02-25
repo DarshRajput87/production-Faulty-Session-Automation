@@ -2,24 +2,38 @@ export const PARTY_CONFIG = {
   "HYU": {
     "ocpiCredentials": ["637b5c5ca331354b767cb873"],
     "emails": ["darshraj87@gmail.com"],
+    "cc": [
+      "Ashwariya.wankhede@chargezone.co.in",
+      "kaushal.ganglani@chargezone.co.in",
+      "jainilp4321@gmail.com"
+    ]
   },
   "HYI": {
     "ocpiCredentials": ["66cbfa6bcc9cac2fca10d6c0"],
-    "emails": ["darshraj87@gmail.com"]
-  },
-  "HUB": {
-    "ocpiCredentials": ["676a929204be1dece2322591"],
-    "emails": ["darshraj87@gmail.com"]
+    "emails": ["darshraj87@gmail.com"],
+    "cc": [
+      "Ashwariya.wankhede@chargezone.co.in",
+      "kaushal.ganglani@chargezone.co.in",
+      "jainilp4321@gmail.com"
+    ]
   },
   "HUB": {
     "ocpiCredentials": ["676a929204be1dece2322591"],
     "emails": ["darshraj87@gmail.com"],
-    
+    "cc": [
+      "Ashwariya.wankhede@chargezone.co.in",
+      "kaushal.ganglani@chargezone.co.in",
+      "jainilp4321@gmail.com"
+    ]
   },
   "PAR": {
     "ocpiCredentials": ["67d0020f2ebbd1df169abe65"],
     "emails": ["darshraj87@gmail.com"],
-   
+    "cc": [
+      "Ashwariya.wankhede@chargezone.co.in",
+      "kaushal.ganglani@chargezone.co.in",
+      "jainilp4321@gmail.com"
+    ]
   },
   "ELC": {
     "ocpiCredentials": [
@@ -27,26 +41,56 @@ export const PARTY_CONFIG = {
       "67e29fd6a64982d63c6145b3"
     ],
     "emails": ["darshraj87@gmail.com"],
+    "cc": [
+      "Ashwariya.wankhede@chargezone.co.in",
+      "kaushal.ganglani@chargezone.co.in",
+      "jainilp4321@gmail.com"
+    ]
   },
   "EVX": {
     "ocpiCredentials": ["67e66b88fd11b7a2021ade19"],
     "emails": ["darshraj87@gmail.com"],
+    "cc": [
+      "Ashwariya.wankhede@chargezone.co.in",
+      "kaushal.ganglani@chargezone.co.in",
+      "jainilp4321@gmail.com"
+    ]
   },
   "CZG": {
     "ocpiCredentials": ["68bff6ffbf2cb3fc4d7362f6"],
     "emails": ["darshraj87@gmail.com"],
+    "cc": [
+      "Ashwariya.wankhede@chargezone.co.in",
+      "kaushal.ganglani@chargezone.co.in",
+      "jainilp4321@gmail.com"
+    ]
   },
   "KEV": {
     "ocpiCredentials": ["69241caac9e8876a3a024f97"],
     "emails": ["darshraj87@gmail.com"],
+    "cc": [
+      "Ashwariya.wankhede@chargezone.co.in",
+      "kaushal.ganglani@chargezone.co.in",
+      "jainilp4321@gmail.com"
+    ]
   },
   "CZK": {
     "ocpiCredentials": ["695361adaf0a4328751fbc17"],
     "emails": ["darshraj87@gmail.com"],
+    "cc": [
+      "Ashwariya.wankhede@chargezone.co.in",
+      "kaushal.ganglani@chargezone.co.in",
+      "jainilp4321@gmail.com"
+    ]
   },
   "BLT": {
     "ocpiCredentials": ["695f43491f0e9d619c944220"],
     "emails": ["darshraj87@gmail.com"],
+    "cc": [
+      "Ashwariya.wankhede@chargezone.co.in",
+      "kaushal.ganglani@chargezone.co.in",
+      "jainilp4321@gmail.com"
+    ]
   }
 };
 
